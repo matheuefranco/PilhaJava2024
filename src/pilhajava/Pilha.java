@@ -19,5 +19,36 @@ public class Pilha<T> {
             return true;
         return false;
     }
+    public boolean push(T novoDado){
+        if(!this.isFull()){
+            //this.topo++;
+            elementos[++topo] = novoDado;
+            return true;
+        }// fim if
+        return false;
+    }// fim push
+    public T pop(){
+        T retorno = elementos[topo];
+        topo--;
+        return retorno;
+        //return elementos[topo--];
+    }// fim pop
+    public int size(){
+        return topo+1;
+    }
+    
+    public T peek(){
+        return elementos[topo];
+    }
+    
+    @Override
+    public String toString(){
+        StringBuilder retorno = new StringBuilder();
+        for(int i=topo;i>=0;i--)
+            retorno.append(elementos[i] + "\n");
+        retorno.append("-----------");
+        return retorno.toString();
+    }
+    
     
 }
