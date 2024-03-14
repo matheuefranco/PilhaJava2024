@@ -2,6 +2,7 @@
 package pilhajava;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Recorde {
     private String nome;
@@ -34,8 +35,10 @@ public class Recorde {
     
     @Override
     public String toString(){
+        String dataFormatada = this.data.format
+              (DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         return "[Nome:"+this.nome+" data:"+ 
-                this.data + " tempo:"+ this.tempo+"]";
+                dataFormatada + " tempo:"+ this.tempo+"]";
     }
     
     
