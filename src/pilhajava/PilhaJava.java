@@ -2,6 +2,7 @@ package pilhajava;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Random;
 import java.util.Scanner;
 
 public class PilhaJava {
@@ -13,6 +14,7 @@ public class PilhaJava {
         System.out.println("2. Remover elemento");
         System.out.println("3. Mostrar topo");
         System.out.println("4. Mostrar pilha");
+        System.out.println("5. Inserir infinito");
         System.out.println("0. Sair");
         System.out.printf("Digite a op desejada: %n", "UTF-8");
         return scanner.nextInt();
@@ -34,9 +36,9 @@ public class PilhaJava {
     public static void main(String[] args) {
         int tamanho,op=0, elemento;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Tamanho da pilha:");
-        tamanho = scanner.nextInt();
-        Pilha<Recorde> pilha = new Pilha<>(tamanho);
+        //System.out.println("Tamanho da pilha:");
+        //tamanho = scanner.nextInt();
+        PilhaEncadeada<Recorde> pilha = new PilhaEncadeada<>();
         do{
             op = mostrarMenu();
             switch(op){
@@ -63,6 +65,21 @@ public class PilhaJava {
                 break;
                 case 4:System.out.println("Elementos da pilha\n");
                         System.out.println(pilha);
+                break;
+                 case 5: System.out.println("Insere infinito\n");
+                         Recorde outroRecorde = new Recorde();
+                         boolean retorno;
+                         int cont = 0;
+                         Random numero = new Random();
+                         do{
+                             // gerar dados para o recorde
+                             outroRecorde.setTempo(numero.nextInt());
+                             retorno = pilha.push(outroRecorde);
+                             cont++;
+                             System.out.println("Cont:"+cont);
+                         }while(retorno == true);
+
+                        
                 break;
             }// fim switch
             System.out.println("Pressione uma tecla para continuar\n");
